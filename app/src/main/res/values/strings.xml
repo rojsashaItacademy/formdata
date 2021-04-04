@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MolBulakApp</string>
+    <string name="registration">Регистрация</string>
+    <string name="description">Введите номер телефона и нажмите\n “Далее”</string>
+    <string name="further">Далее</string>
+    <string name="name">Имя</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="enter_password">Выберите пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="secret_question">Выберите секретный вопрос</string>
+    <string name="answer">Ответ на секретный вопрос</string>
+    <string name="agreement">Я согласен с условиями обработки персональных данных</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="question">Уже зарегестрированны?</string>
+    <string name="congratulations">Поздравляем!</string>
+    <string name="congratulations_description">Вы успешно прошли регистрацию.\n Введите код из смс в поле ниже и\n нажмите “Продолжить”.</string>
+    <string name="sms_code">Код из смс-сообщения</string>
+    <string name="proceed">Продолжить</string>
+    <string name="unreceived_code">Я не получил код</string>
+    <string name="success_registration">Вы уже зарегистрированы.\n Перейдите к авторизации.</string>
+    <string name="authorization">Авторизация</string>
+    <string name="forgot_password">Не помню пароль</string>
+    <string name="phoneNumber">996508170177</string>
+</resources>
