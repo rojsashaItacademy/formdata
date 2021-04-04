@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kg.nurik.molbulakapp.data.interactors.Interactors
+import kg.nurik.molbulakapp.data.local.PreferenceHelper
 import kg.nurik.molbulakapp.data.model.BaseList
 import kg.nurik.molbulakapp.data.model.ResultCode
 import kg.nurik.molbulakapp.view.toSingleEvent
@@ -28,7 +29,8 @@ class AuthorizationViewModel(private val network: Interactors) : ViewModel() {
                 val result = network.checkNumber(phone, token = "oYyxhIFgJjAb")
                 if (result.isSuccessful)
                     data.postValue(let { result.body() })
-//                result.body()?.id?.let { PreferenceHelper.setTokenPhoneNumber(it) }
+
+                result.body()?.result?.id?.let { PreferenceHelper.setTokenPhoneNumber(it) }
             }.onFailure {
                 Log.d("CheckNumber", it.localizedMessage ?: "error request")
                 eventPhoneError.postValue(true)
