@@ -15,8 +15,9 @@ import kotlinx.coroutines.launch
 
 class AuthorizationViewModel(private val network: Interactors) : ViewModel() {
 
-    val data = MutableLiveData<BaseList>()
+    val data = MutableLiveData<BaseList<ResultCode>>()
     val eventPhoneError = MutableLiveData<Boolean>().toSingleEvent()
+    val eventCodeSuccess = MutableLiveData<Boolean>().toSingleEvent()
 
     fun verifyCredentials(phone: String) {
         if (checkPhoneErrorMessage(phone) && phone.length > 5)
@@ -40,6 +41,20 @@ class AuthorizationViewModel(private val network: Interactors) : ViewModel() {
 
     private fun checkPhoneErrorMessage(phone: String): Boolean {
         return Patterns.PHONE.matcher(phone.trim()).matches()
+    }
+
+    fun checkCode(code: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                val result = network.checkCode(token = "oYyxhIFgJjAb", code = code)
+                if (result.isSuccessful)
+                    eventCodeSuccess.postValue(true)
+
+            }.onFailure {
+                Log.d("CheckNumber", it.localizedMessage ?: "error request")
+                eventPhoneError.postValue(true)
+            }
+        }
     }
 }
 

@@ -7,6 +7,7 @@ import kg.nurik.molbulakapp.data.remote.RetrofitBuilder
 import kg.nurik.molbulakapp.data.repository.Repository
 import kg.nurik.molbulakapp.data.repository.RepositoryImpl
 import kg.nurik.molbulakapp.ui.authorization.AuthorizationViewModel
+import kg.nurik.molbulakapp.ui.dialog.CodeViewModel
 import kg.nurik.molbulakapp.ui.registration.RegistrationViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -15,6 +16,7 @@ import org.koin.dsl.module
 val viewModelModule: Module = module {
     viewModel { AuthorizationViewModel(get()) }
     viewModel { RegistrationViewModel(get()) }
+    viewModel { CodeViewModel(get()) }
 }
 
 val repositoryModule: Module = module {

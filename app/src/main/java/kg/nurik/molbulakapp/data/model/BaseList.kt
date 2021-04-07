@@ -1,6 +1,6 @@
 package kg.nurik.molbulakapp.data.model
 
-data class BaseList(
+data class BaseList<T>(
     val code: Int,
-    val result: ResultCode
+    val result: T
 )

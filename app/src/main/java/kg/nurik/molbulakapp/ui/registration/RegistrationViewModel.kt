@@ -9,17 +9,13 @@ import kg.nurik.molbulakapp.data.model.ListRegistration
 import kg.nurik.molbulakapp.data.model.UserCreateModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class RegistrationViewModel(private val network: Interactors) : ViewModel() {
 
     val register = MutableLiveData<ListRegistration>()
 
-    fun verifyCredentialsRegister(data: UserCreateModel) {
-        if (data.first_name.isNullOrEmpty() && data.last_name.isNullOrEmpty())
-            register(data)
-    }
-
-    private fun register(data: UserCreateModel) {
+    fun register(data: UserCreateModel) {
         viewModelScope.launch(Dispatchers.IO) {
             runCatching {
                 val result = network.registration(data, token = "oYyxhIFgJjAb")

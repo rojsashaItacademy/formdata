@@ -11,18 +11,31 @@ interface MolbulakService {
     suspend fun checkPhone(
         @Field("phone") data: String,
         @Query("token") token: String
-    ): Response<BaseList>
+    ): Response<BaseList<ResultCode>>
 
+    @FormUrlEncoded
     @POST("api/app/checkCode")
     suspend fun checkCode(
-        @Body data: Map<Int, Int>,
+        @FieldMap map: Map<String, Int>,
         @Query("token") token: String
-    ): Response<CheckCode>
+    ): Response<BaseList<CheckCode>>
 
+    @FormUrlEncoded
     @POST("api/app/registration")
     suspend fun registration(
-        @Body data: UserCreateModel,
+        @Field("first_name") first_name: String,
+        @Field("last_name") last_name: String,
+        @Field("second_name") second_name: String,
+        @Field("u_date") u_date: String,
+        @Field("gender") gender: String,
+        @Field("nationality") nationality: String,
+        @Field("first_phone") first_phone: String,
+        @Field("second_phone") second_phone: String,
+        @Field("traffic_source") traffic_source: String,
+        @Field("question") question: String,
+        @Field("response") response: String,
+        @Field("sms_code") sms_code: String,
+        @Field("system") system: String,
         @Query("token") token: String
     ): Response<ListRegistration>
-
 }

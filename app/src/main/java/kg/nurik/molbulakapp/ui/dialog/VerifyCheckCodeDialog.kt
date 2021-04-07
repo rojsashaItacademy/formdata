@@ -32,7 +32,7 @@ class VerifyCheckCodeDialog(
     private fun setupListeners() {
         btnProceed?.setOnClickListener {
             if (etCode != null) {
-                listener.sendText(etCode?.text.toString())
+                listener.sendText(etCode?.text.toString().toInt())
                 dismiss()
             } else {
                 Toast.makeText(context, "Ведите код из смс", Toast.LENGTH_SHORT).show()
@@ -43,5 +43,5 @@ class VerifyCheckCodeDialog(
 
 interface DialogCLicks {
     fun clickDialog(isNeedCloseApp: Boolean)
-    fun sendText(text: String)
+    fun sendText(code: Int)
 }

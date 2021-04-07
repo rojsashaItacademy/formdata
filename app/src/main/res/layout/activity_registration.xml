@@ -65,9 +65,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/et_Name" />
 
-            <EditText
+            <kg.nurik.molbulakapp.view.PasswordEditText
                 android:id="@+id/et_Password"
                 android:layout_width="match_parent"
+                android:paddingEnd="8dp"
                 android:layout_height="@dimen/dp50"
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginTop="@dimen/dp16"
@@ -75,7 +76,6 @@
                 android:background="@drawable/bg_edtext"
                 android:fontFamily="@font/inter_bold"
                 android:hint="@string/enter_password"
-                android:inputType="textPassword"
                 android:paddingStart="@dimen/dp16"
                 android:textColor="@color/color_grey"
                 android:textSize="@dimen/sp16"
@@ -83,17 +83,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/et_PhoneNumber" />
 
-            <EditText
+            <kg.nurik.molbulakapp.view.PasswordEditText
                 android:id="@+id/et_RepeatPassword"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp50"
+                android:paddingEnd="8dp"
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginTop="@dimen/dp16"
                 android:layout_marginEnd="@dimen/dp16"
                 android:background="@drawable/bg_edtext"
                 android:fontFamily="@font/inter_bold"
                 android:hint="@string/repeat_password"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:paddingStart="@dimen/dp16"
                 android:textColor="@color/color_grey"
                 android:textSize="@dimen/sp16"

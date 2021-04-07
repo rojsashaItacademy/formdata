@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import kg.nurik.molbulakapp.R
-import kg.nurik.molbulakapp.data.local.PreferenceHelper
 import kg.nurik.molbulakapp.databinding.ActivityAuthorizationBinding
 import kg.nurik.molbulakapp.ui.dialog.DialogCLicks
 import kg.nurik.molbulakapp.ui.dialog.VerifyCheckCodeDialog
@@ -28,8 +26,11 @@ class AuthorizationActivity : AppCompatActivity(), DialogCLicks {
     }
 
     private fun setupVM() {
-        vm.eventPhoneError.observe(this, Observer {
+        vm.eventPhoneError.observe(this, {
             Toast.makeText(this, "Не верный номер", Toast.LENGTH_LONG).show()
+        })
+        vm.eventCodeSuccess.observe(this, {
+            openRegistActivity()
         })
     }
 
@@ -54,11 +55,12 @@ class AuthorizationActivity : AppCompatActivity(), DialogCLicks {
         if (isNeedCloseApp) finish()
     }
 
-    override fun sendText(text: String) {
-        if (PreferenceHelper.getTokenPhoneNumber() == text) {
-            startActivity(Intent(this,RegistrationActivity::class.java))
-        } else {
-            Toast.makeText(this, "Ведите правильный код", Toast.LENGTH_SHORT).show()
-        }
+    override fun sendText(code: Int) {
+        vm.checkCode(code)
+
+    }
+
+    fun openRegistActivity(){
+        startActivity(Intent(this,RegistrationActivity::class.java))
     }
 }
